@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tmgree/GitHub_profiles-AngularJS-.git"
+    "url": "git+https://github.com/edwardkerry/GithubUserSearch.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Tmgree/GitHub_profiles-AngularJS-/issues"
+    "url": "https://github.com/edwardkerry/GithubUserSearch/issues"
   },
-  "homepage": "https://github.com/Tmgree/GitHub_profiles-AngularJS-#readme",
+  "homepage": "https://github.com/edwardkerry/GithubUserSearch#readme",
   "devDependencies": {
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.19",
@@ -23,6 +23,7 @@
     "karma-html-reporter": "^0.2.7",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
+    "karma-unicorn-reporter": "^0.1.4",
     "phantomjs": "^1.9.19"
   },
   "dependencies": {
