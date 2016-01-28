@@ -1,6 +1,9 @@
 {
   "name": "github_profiles-angularjs-",
   "version": "1.0.0",
+  "engines": {
+    "node": "5.4.0"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
