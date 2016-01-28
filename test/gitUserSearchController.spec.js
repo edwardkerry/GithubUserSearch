@@ -3,49 +3,46 @@ describe('GitUserSearchController', function(){
 
   var ctrl;
 
-  beforeEach(inject(function($controller){
-    ctrl = $controller('GitUserSearchController');
-  }));
-
-  it('initialises with an empty search result and term', function() {
-      expect(ctrl.searchResult).toBeUndefined();
-      expect(ctrl.searchTerm).toBeUndefined();
-  });
-
   describe('when searching for a user', function(){
 
-    var httpBackend;
-    beforeEach(inject(function($httpBackend){
-      httpBackend = $httpBackend;
-      httpBackend
-        .expectGET("https://api.github.com/search/users?q=hello")
-        .respond(
-          { items: items }
-        );
-    }));
-    afterEach(function(){
-      httpBackend.verifyNoOutstandingExpectation();
-      httpBackend.verifyNoOutstandingRequest();
+    var fakeSearch, scope;
+
+    beforeEach(function(){
+      fakeSearch = jasmine.createSpyObj('fakeSearch', ['query']);
+
+      module({
+        Search:   fakeSearch
+      });
     });
 
-    var items = [
-      {
-        "login": "tansaku",
-        "avatar_url": "https://avatars.githubusercontent.com/u/30216?v=3",
-        "html_url": "https://github.com/tansaku"
-      },
-      {
-        "login": "stephenlloyd",
-        "avatar_url": "https://avatars.githubusercontent.com/u/196474?v=3",
-        "html_url": "https://github.com/stephenlloyd"
-      }
-    ];
+    var gitHubSearchResponse = {
+      "items" : [
+        {
+          "login": "tansaku",
+          "avatar_url": "https://avatars.githubusercontent.com/u/30216?v=3",
+          "html_url": "https://github.com/tansaku"
+        },
+      ]
+    };
+
+    var mockUserData = JSON.parse(JSON.stringify(gitHubSearchResponse));
+
+    beforeEach(inject(function($controller, $rootScope, $q){
+      scope = $rootScope;
+      fakeSearch.query.and.returnValue($q.when( { data: gitHubSearchResponse}));
+      ctrl = $controller('GitUserSearchController');
+    }));
+
+    it('initialises with an empty search result and term', function() {
+        expect(ctrl.searchResult).toBeUndefined();
+        expect(ctrl.searchTerm).toBeUndefined();
+    });
 
     it('displays search results', function() {
-      ctrl.searchTerm = "hello";
+      ctrl.searchTerm = "tansaku";
       ctrl.doSearch();
-      httpBackend.flush();
-     expect(ctrl.searchResult.items).toEqual(items);
+      scope.$apply();
+      expect(ctrl.searchResult).toEqual(gitHubSearchResponse.items);
     });
   });
 

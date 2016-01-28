@@ -13,19 +13,24 @@
   </head>
 
   <body ng-controller="GitUserSearchController as searchCtrl">
+    <h1> Github User Search </h1>
     <div>
-      <form class="form-horizontal">
-        <input type="text" ng-model="searchCtrl.searchTerm"
-        ng-change="searchCtrl.doSearch()"
-        ng-model-options="{ updateOn: 'default blur',
-                            debounce: {'default': 500,
-                            'blur': 0} }">
-        <button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
+      <form class="form-horizontal" name="searchBar">
+        <input  class="form-control" width="300"
+                type="text"
+                ng-model="searchCtrl.searchTerm"
+                ng-change="searchBar.$valid &amp;&amp; searchCtrl.doSearch()"
+                ng-model-options="{ updateOn: 'default blur',
+                                    debounce: {'default': 500,
+                                                'blur': 0} }"
+                required>
+        <button class="btn" ng-click="searchCtrl.doSearch(); searchCtrl.setSearch()">Search</button>
       </form>
+      <p id="last-search" ng-show="searchCtrl.lastSearch"> Last search: {{searchCtrl.lastSearch}}
       <ul class="list-group">
         <li class="list-group-item"
         ng-repeat="user in searchCtrl.searchResult.items">
-          <img ng-src="{{user.avatar_url}}&s=50">
+          <img ng-src="{{user.avatar_url}}?s=50" width="50" height="50">
           <a ng-href="{{user.html_url}}">{{user.login}}</a>
         </li>
       </ul>
