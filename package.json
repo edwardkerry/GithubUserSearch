@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/edwardkerry/GithubUserSearch#readme",
   "devDependencies": {
+    "express": "^4.13.4",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
@@ -24,11 +25,10 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "karma-unicorn-reporter": "^0.1.4",
-    "phantomjs": "^1.9.19",
-    "express"
+    "phantomjs": "^1.9.19"
   },
   "dependencies": {
-    "http-server": "^0.8.5",
-    "express"
+    "express": "^4.13.4",
+    "http-server": "^0.8.5"
   }
 }
