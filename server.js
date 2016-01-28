@@ -3,13 +3,13 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
-var rootpath = path.normalize(__dirname);
+var rootpath = path.join(__dirname, 'public');
 
 app.use(express.static(rootpath));
 
-  app.get('*', function(req, res){
-    res.sendFile(rootpath + '/public/index.html');
+  app.get('/', function(req, res){
+    res.sendFile(rootpath + '/index.html');
   });
 
 app.listen(3000);
-console.log('Listening on port 8080');
+console.log('Listening on port 3000');
