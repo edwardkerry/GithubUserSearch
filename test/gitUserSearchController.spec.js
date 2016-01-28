@@ -42,7 +42,7 @@ describe('GitUserSearchController', function(){
       ctrl.searchTerm = "tansaku";
       ctrl.doSearch();
       scope.$apply();
-      expect(ctrl.searchResult).toEqual(gitHubSearchResponse.items);
+      expect(ctrl.searchResult.items).toEqual(gitHubSearchResponse.items);
     });
   });
 
