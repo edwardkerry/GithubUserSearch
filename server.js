@@ -11,5 +11,5 @@ app.use(express.static(rootpath));
     res.sendFile(rootpath + '/public/index.html');
   });
 
-app.listen(8080);
+app.listen(3000);
 console.log('Listening on port 8080');
