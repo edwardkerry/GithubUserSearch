@@ -3,5 +3,6 @@ exports.config = {
   specs: ['githubProfileFeature.js'],
   capabilities: {
     browserName: 'chrome'
-  }
+  },
+  baseUrl: 'http://localhost:3000/',
 };

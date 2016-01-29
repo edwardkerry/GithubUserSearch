@@ -4,7 +4,7 @@ describe('Github Profile finder', function(){
   var searchButton = element(by.className('btn'));
 
   beforeEach(function(){
-    browser.get('http://localhost:8080');
+    browser.get('http://localhost:3000');
   });
 
   it('has a title', function(){
@@ -35,6 +35,5 @@ describe('Github Profile finder', function(){
     var profiles = element.all(by.repeater('user in searchCtrl.searchResult.items'));
     expect(profiles.get(0).getText()).toContain('ed');
   });
-
 
 });

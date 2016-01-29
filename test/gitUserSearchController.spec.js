@@ -25,8 +25,6 @@ describe('GitUserSearchController', function(){
       ]
     };
 
-    var mockUserData = JSON.parse(JSON.stringify(gitHubSearchResponse));
-
     beforeEach(inject(function($controller, $rootScope, $q){
       scope = $rootScope;
       fakeSearch.query.and.returnValue($q.when( { data: gitHubSearchResponse}));

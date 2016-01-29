@@ -5,7 +5,7 @@ var app = express();
 
 var rootpath = path.join(__dirname, 'public');
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static(rootpath));
 
